@@ -75,8 +75,8 @@ The example below corresponds to:
 - Precursor and protein groups will be counted as "IDs" if a value is reported in at least 2 of 4 replicates in both condition A and B.
 - Precursor and protein groups will be counted as "Quantified" if they are "IDs" and have a CV less than 20% in both condition A and B.
 - Quantified protein groups are subjected to differential expression analysis with limma with a statistical cutoff of 1% (0.01),
- however, protein groups are only recognized as up or downregulated if the log2 fold-change exceeds +-0.5.
-- Changing filter settings will not overwrite preview results but lead to a separate output folder.
+ however, protein groups are only recognized as up or downregulated if the log2 fold-change exceeds +-0.5 (overruling the adjusted p-value).
+- Changing filter settings will not overwrite results but lead to a separate output folder.
 
 ```
 folder_input <- "C:/Users/Tobias/Desktop/Test_Input"
