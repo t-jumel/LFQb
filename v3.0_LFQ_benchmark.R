@@ -915,7 +915,7 @@ f.LFQbenchmark.summary.stats <-
                                  Group == "protein group",
                                select = "Asymmetry_Factor")))
     
-    summary_stats[, "Prot_Asymmetry_Prot_Yeast"] <- 
+    summary_stats[, "Prot_Asymmetry_Yeast"] <- 
       round( digits =2,
              as.numeric(subset(asymmetry, 
                                Species == "Yeast" &
@@ -1007,7 +1007,7 @@ f.LFQbenchmark.summary.stats <-
                                  Group == "precursor",
                                select = "Asymmetry_Factor")))
     
-    summary_stats[, "Prec_Asymmetry_Prec_Yeast"] <- 
+    summary_stats[, "Prec_Asymmetry_Yeast"] <- 
       round( digits =2,
              as.numeric(subset(asymmetry, 
                                Species == "Yeast" &
