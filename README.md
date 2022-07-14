@@ -1,11 +1,12 @@
-# LFQ benchmark
-Benchmarking label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
+# LFQ_benchmark v3.0
+Benchmarks of label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
 
 
 This script analyzes DIA-NN precursor and protein group matrices of LFQ benchmarks resulting
-in plots and summary statistics representing sensitivity, quantitative accuracy, and overall reliability.
+in plots and summary statistics representing sensitivity, quantitative accuracy, and overall reliability
+in differential expression analysis.
 It enables meaningful comparison of multiple result sets 
-(e.g. different DIA-NN settings) or troubleshooting utility.
+and has proven to be useful for DIA-NN setting optimization, performance benchmarks, and troubleshooting.
    
     
       
@@ -24,24 +25,25 @@ A nice resource for benchmark raw files from various instrument types can be fou
 # Quick Start Guide
 ## Samples
 
-<img src="readme_figures/01.png" alt="sample mixtures" width="250"/>
+<img src="readme_figures/01.png" alt="sample mixtures" width="150"/>
 
 - Sample mixtures are typically derived from commercial digests.
 - Aim at ca. 3 replicates per condition.
-- This script should handle different expected fold-changes and even 2-species mixtures directly, the layout (yeast upregulated from B to A, etc.) is hard-coded, deviating might result in some summary stats to result in nonsense values.
-- Raw data processing with DIA-NN against SwissProt fasta is recommended.
-- Only DIA-NN-style matrices can be directly analyzed.
+- This script should handle different expected fold-changes and even 2-species mixtures directly, the orientation (yeast upregulated from B to A, etc.) is hard-coded, deviating might result in some summary stats to result in nonsense values.
+- Only DIA-NN-style matrices can be directly analyzed. Both precursor and protein group are required as some critical errors 
+might be missed otherwise.
 
 
-## Analysis Preparation
+## R Packages
 
-### R packages
-Install packages, CRAN automatically, Bioconductor below.
 ```
+# Install and load required base packages automatically.
+# Bioconductor ones are separately below.
 if (!require("pacman"))
   install.packages("pacman")
 pacman::p_load(
   tidyr,
+  dplyr,
   matrixStats,
   mratios,
   magrittr,
@@ -55,6 +57,7 @@ pacman::p_load(
   cowplot,
   scales)
 ```
+
 ```
 if (!requireNamespace("BiocManager", quietly = TRUE))
   install.packages("BiocManager")
@@ -101,18 +104,75 @@ alpha_limma <- 0.01
 
 ## Interpretation
 
-Successful script execution results in a subfolder within the input folder
-containing multiple plots and summary stats for precursor and protein groups, respectively.
+Successful script execution results in a subfolder within the input folder.
+It contains various plots for precursor and protein group-level entries passing the filter settings
+plus csv files for script variables, asymmetry summary stats and main summary stats.
 
-<img src="readme_figures/03.png" alt="output_overview" width="900"/>
+
+1) Check all plots for anything unusual incl. Precursor-level. Expect the unexpected.
 
 
-- Check scatter, facet, and density plots for unexpected errors.
-- Check density plots for offsets and asymmetries. 
-  - Tailing towards a log2FC of 0 indicates ratio compression often seen in ToF data, leading to underestimation of fold-changes resulting in a reduced capability to detect smaller fold-changes as such.
-  - Tailing towards the outside indicates ratio extension rarely seen in orbitrap data, overestimation of fold-changes might result in increased false positives in differential expression analysis
-- Check facet plots for aberrant quantifications, especially those remaining after strict filtering as above and those appearing in clusters at fold-changes of a species different than the annotation. These might indicate errors related to precursor or protein group fdr.
-- For optimization try to avoid ratio expansion, avoid a deFDR value vastly exceeding 1% and clusters of aberrants being visible and maximize the number of true-positives rather than the number of IDs and Quants.
+2) Check for appropriate normalisation.
+Potential erroneous offsets (medians or scatter plots) could invalidate the
+summary stats generated. While ratio compression or expansion can move 
+Yeast and E.coli medians, the critical normalisation related errors typically shift 
+Human and Yeast medians or data points by the same distance and direction 
+on the log2 fold-change axis.
+
+
+3) Check reliability to prevent excess false positives in differential expression analysis.
+Reliability is related to the deFDR value and the presence of aberrant quantifications
+in facet plots. Artificially increased protein group FDR leads to clear clusters
+of human protein groups around the expected Yeast log2 fold-change, and vice versa.
+A deFDR below 1 %, the absence of such clusters and no strong ratio expansion
+speak for excellent reliability. A workflow optimized to minimize these error sources
+might be less likely to result in false positives during differential expression applications.
+Depending on the scope and replicate numbers, deFDR values higher than 1 %
+might be tolerated.
+
+
+4) Check fold-change over-or underestimation.
+One of the most overlooked issues in quantitative proteomics.
+Orbitrap data might result in ratio expansion while ToF data might result in the 
+opposing ratio compression, both cases depend on the analysis settings.
+A separate data frame and output file lists multiple stats related to these.
+The most useful one seems to be the Asymmetry_Factor. 
+
+A Factor of 1 means perfect symmetry and no bias. 
+0.5 indicates a strong and undesirable underestimation, leading to slightly differentially
+abundant proteins not recognized correctly as such.
+The increased number of false negatives means
+differential expression results can be reliable but less sensitive.
+An Asymmetry_Factor of 2 indicates a strong and undesired fold-change overestimation.
+Might lead to a slightly increased deFDR and false positive rate 
+in differential expression applications.
+
+
+5) Check Precision.
+Good Precision is a requirement for overall accuracy.
+When working with ca. 3 replicates and a CV filter of 20%,
+it seems well sufficient if a result set ends up with average and median
+CV at or below 5 %. The value aimed at might vary based on replicate number,
+proteome coverage, and intended application outside of benchmarks.
+While workflows with higher values might be reliable, a loss of 
+sensitivity in differential expression applications is expected at some point.
+
+
+6) When optimizing, DIA-NN or instrument settings, etc.,
+aim to stay within a specified deFDR and ratio compression / extension
+while maximizing the true positive count. A TP count exceeding 2500 is quite good, 
+3000 seems hard to reach and might be close to the upper limit. The scaling is non-linear, 
+increasing from 2.5k to 3k is more difficult than from 2k to 2.5k.
+
+
+
+
+
+
+
+
+
+
 
 
 <img src="readme_figures/04.png" alt="output_overview" width="1000"/>
@@ -120,6 +180,7 @@ containing multiple plots and summary stats for precursor and protein groups, re
 
 Most other stats serve just as indicators and are therefore explained in the script.
 Summary stats are nice, but dataviz has greater potential to reveal unexpected errors.
+ 
 Happy benchmarking (:
 
 
