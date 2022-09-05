@@ -1,4 +1,4 @@
-# LFQ_benchmark v3.0
+# LFQ_benchmark v3.2
 Benchmarks of label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
 
 
