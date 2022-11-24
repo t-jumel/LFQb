@@ -1,5 +1,5 @@
-# LFQ_benchmark v3.2
-Benchmarks of label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
+# LFQb v3.2
+Benchmarks of multi-species mixtures and label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
 
 
 This script analyzes DIA-NN precursor and protein group matrices of LFQ benchmarks resulting
