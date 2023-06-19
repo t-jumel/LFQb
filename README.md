@@ -1,31 +1,31 @@
 # LFQ_bout v3.4
-Benchmarks of multispecies mixtures and label-free quantification (LFQ) in bottom-up proteomics by DIA LC-MS and DIA-NN.
+**Defining and achieving high accuracy in untargeted bottom-up proteomics.**
+
+To benchmark the overall performance and accuracy in untargeted bottom-up proteomics,
+multi-species sample mixtures providing expected log2 fold-changes are frequently used.
+However, we observed that the benchmark data is usually analysed in a vastly insufficent fashion.
+
+Here, we provide principles, guidelines, and an R script to achieve full validation
+and practical performance and accuracy evaluation. The goal is to acquire graphs, summary statistics and thresholds
+providing exact information if a particular dataset/workflow is accurate/valid or not,
+and also enable meaningful performance comparison of multiple workflows to compare software, LC-MS setups, settings etc.
 
 
-This script analyzes DIA-NN precursor and protein group matrices of LFQ benchmarks resulting
-in plots and summary statistics representing sensitivity, quantitative accuracy, and overall validity
-in differential expression analysis.
-It enables meaningful comparison of multiple result sets 
-and has proven to be useful for DIA-NN setting optimization, performance benchmarks, and troubleshooting.
-   
-    
-      
-This script serves as an alternative to scripts and packages
-from the following publications:
-
-- Kuharev, Jörg, et al. "In‐depth evaluation of software tools for data‐independent acquisition based label‐free quantification." Proteomics 15.18 (2015): 3140-3151.
-
-- Navarro, Pedro, et al. "A multicenter study benchmarks software tools for label-free proteome quantification." Nature biotechnology 34.11 (2016): 1130-1136.
-
-
+The following 2 main sections will be a quick start guide 
+followed by a guide on error sources and how to how to find them in bottom-up proteomics data.
 
 A nice resource for benchmark raw files from various instrument types can be found here:
 - https://www.ebi.ac.uk/pride/archive/projects/PXD028735
 
+
+
+  
 # Quick Start Guide
 ## Samples
 
+
 <img src="readme_figures/01.png" alt="sample mixtures" width="150"/>
+<img src="readme_figures/02.png" alt="sample mixtures" width="150"/>
 
 - Sample mixtures are typically derived from commercial digests.
 - Aim at ca. 3 replicates per condition. required are two conditions with at least 2 replicates each.
@@ -173,5 +173,20 @@ Most other stats serve just as indicators and are therefore explained in the scr
 Summary stats are nice, but dataviz has greater potential to reveal unexpected errors!
  
 Happy benchmarking (:
+
+
+
+
+
+
+
+
+This script serves as an alternative to scripts and packages
+from the following publications:
+
+- Kuharev, Jörg, et al. "In‐depth evaluation of software tools for data‐independent acquisition based label‐free quantification." Proteomics 15.18 (2015): 3140-3151.
+
+- Navarro, Pedro, et al. "A multicenter study benchmarks software tools for label-free proteome quantification." Nature biotechnology 34.11 (2016): 1130-1136.
+
 
 
