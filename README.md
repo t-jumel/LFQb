@@ -28,7 +28,7 @@ A nice resource for benchmark raw files from various instrument types can be fou
 
 Classical Benchmark         |  Variant to validate cross-run Normalisation
 :-------------------------:|:-------------------------:
-<img src="readme_figures/01.png" alt="sample mixtures" width="150"/>  |  <img src="readme_figures/03.png" alt="sample mixtures" width="350"/>
+<img src="readme_figures/01.png" alt="future figure insert" width="150"/>  |  <img src="readme_figures/03.png" alt="future figure insert" width="350"/>
 
 
 
@@ -54,7 +54,7 @@ folder_input <- "C:/Users/Tobias/Desktop/Example_Input"
 
 - To select the folder, I recommend using "Path Copy Copy" with the following settings
 to easily copy&paste folder links in a format usable for RStudio.
-<img src="readme_figures/04a.png" alt="sample mixtures" width="350"/> 
+<img src="readme_figures/04a.png" alt="future figure insert" width="350"/> 
 
 
  
@@ -145,7 +145,7 @@ to be recognized as accurate
 -	If software introduces errors by improper normalization, this is best observed on Precursor scatter plots. Additionally, increased summary stats are (Precursor_Trueness, Precursor_Accuracy, deFDR, FP, and FN), and reduced summary stats are (TP, Sensitivity, and Specificity).
 -	Any detectable error (incl. over- or under-correction) leads to the workflow being recognized as invalid
 
-<img src="readme_figures/Error01-Norm.png" alt="sample mixtures" width="450"/> 
+<img src="readme_figures/Error01-Norm.png" alt="future figure insert" width="450"/> 
 
 
 
@@ -160,7 +160,7 @@ to be recognized as accurate
 -	Even unexpected nonsense quantifications apart from normalization errors were detected
 -	The detectable presence of errors indicating severe problems with instrumentation hard- or software leads to the workflow being recognized as invalid
 
-<img src="readme_figures/Error02-System.png" alt="sample mixtures" width="450"/> 
+<img src="readme_figures/Error02-System.png" alt="future figure insert" width="450"/> 
 
 
 
@@ -182,7 +182,7 @@ to be recognized as accurate
 -	ToF data typically shows strong ratio compression
 -	Orbitrap data can show a net ratio expansion, but might not be free a some ratio compression
 
-<img src="readme_figures/Error04-Distortion.png" alt="sample mixtures" width="450"/> 
+<img src="readme_figures/Error04-Distortion.png" alt="future figure insert" width="450"/> 
 
 
 
@@ -200,7 +200,7 @@ to be recognized as accurate
 -	Using the deFDR is vital to penalize result sets pushing ID numbers at the cost of higher rates of misidentifications 
 
 
-<img src="readme_figures/Error05-ID.png" alt="sample mixtures" width="450"/> 
+<img src="readme_figures/Error05-ID.png" alt="future figure insert" width="450"/> 
 
 
 
