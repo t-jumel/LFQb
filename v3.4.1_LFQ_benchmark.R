@@ -13,7 +13,7 @@
 # Demichev, Vadim, et al. "DIA-NN: neural networks and interference correction enable deep proteome coverage in high throughput." Nature methods 17.1 (2020): 41-44.
 # Kuharev, Jörg, et al. "In-depth evaluation of software tools for data-independent acquisition based label-free quantification." Proteomics 15.18 (2015): 3140-3151.
 # Navarro, Pedro, et al. "A multicenter study benchmarks software tools for label-free proteome quantification." Nature biotechnology 34.11 (2016): 1130-1136.
-# Ritchie, Matthew E., et al. "limma powers differential expression analyses for RNA-sequencing and microarray studies." Nucleic acids research 43.7 (2015): e47-e47.
+# Ritchie, Matthew E., et al. "limma powers differential abundance analyses for RNA-sequencing and microarray studies." Nucleic acids research 43.7 (2015): e47-e47.
 
 
 
@@ -105,7 +105,7 @@
 # you swap column indices in variables.
 
 # Any other trend deviation requires changes to the code
-# deriving the number of true positives etc. from differential expression analysis.
+# deriving the number of true positives etc. from differential abundance analysis.
 
 
 
@@ -177,7 +177,13 @@ library(Biobase)
 
 # Variables ---------------------------------------------------------------
 
-# Explanation below at section end for better spacing and overview.
+
+
+
+# Explanation below for better spacing and overview.
+# Explanation below for better spacing and overview.
+# Explanation below for better spacing and overview.
+
 
 
 # Set working directory (just pre-typed, might not be used).
@@ -185,13 +191,13 @@ library(Biobase)
 
 # Script version and name used in output filenames.
 script_name <- "LFQb"
-script_version <- "v3.4"
+script_version <- "v3.4.1"
 
 
 
 # Recommend use of "path copy copy".
 # See "To run this Script" section for input requirements.
-folder_input <- "//fileserver/project_jumel/All_LFQ_benchmarks/External/2021_PXD028735_VanPuyvelde/timsTOFPro_diaPASEF/01_089"
+folder_input <- "//fileserver/Example Input/"
 
 
 
@@ -237,7 +243,7 @@ rep_max <- max(c(length(col_ctr_Prot), length(col_exp_Prot)))
 rep_min <- rep_max * limit_MV
 
 
-# p_adj cut-off for differential expression analysis by limma.
+# p_adj cut-off for differential abundance analysis by limma.
 alpha_limma <- 0.01
 
 
@@ -273,7 +279,7 @@ plot_res <- 600
 
 ### Explanation variables:
 # script_name and script_version are used in filenames 
-# of exported folders,tables and plots.
+# of exported folders, tables and plots.
 
 # folder_input is a folder containing one DIA-NN 
 # protein group and precursor matrix to analyze.
@@ -728,7 +734,7 @@ Prot3 <- subset(Prot2, ctr_CV <  limit_CV & exp_CV <  limit_CV)
 
 
 
-# Differential Expression Analysis by Limma ----------------------------------------
+# differential abundance Analysis by Limma ----------------------------------------
 
 # Limma to get BH adjusted p-values (p_adj) 
 
@@ -885,7 +891,7 @@ Prot3[(Prot3[, "Species"] == "C.elegans"
 # Processing Precursor Data -----------------------------------------------
 
 # As above for protein groups.
-# but without differential expression analysis.
+# but without differential abundance analysis.
 
 # For columns with qunatitative values in DIA-NN matrices,
 # reduce text from filepath to replicate name (remove file suffix and filepath)
@@ -1109,7 +1115,7 @@ write.csv(Counts,
            alpha_limma)
   
   
-  # deFDR (differential expression FDR) (part of confusion matrix)
+  # deFDR (differential abundance FDR) (part of confusion matrix)
   summary_stats[, "deFDR"] <-
     round(digits = 2,
           100 * length(which(Prot3[, "DE_result"] == "false positive")) /
@@ -1214,7 +1220,7 @@ write.csv(Counts,
   
   
   # Other than TP, continued confusion matrix of 
-  # differential expression result interpretation.
+  # differential abundance result interpretation.
   summary_stats[, "FP"] <-
     length(which(Prot3[, "DE_result"] == "false positive"))
   summary_stats[, "TN"] <-
