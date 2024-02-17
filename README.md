@@ -1,8 +1,10 @@
 # LFQ_bout v3.4
 **Defining and achieving high accuracy in untargeted bottom-up proteomics.**
 
+All as per:
 
-_Certain figures will be added after the preprint is published_
+Jumel, Tobias, and Andrej Shevchenko. "Multispecies Benchmark Analysis for LC-MS/MS Validation and Performance Evaluation in Bottom-Up Proteomics." Journal of Proteome Research (2024).
+
 
 To benchmark the overall performance and accuracy in untargeted bottom-up proteomics,
 multi-species sample mixtures providing expected log2 fold changes are frequently used.
