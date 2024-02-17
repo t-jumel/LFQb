@@ -229,18 +229,24 @@ to be recognized as accurate
 
 # Literature
 
+The script and figures were published as follows:
+
+- Jumel, T.; Shevchenko, A. Multispecies Benchmark Analysis for LC-MS/MS Validation and Performance Evaluation in Bottom-Up Proteomics. J. Proteome Res. 2024, 23 (2), 684–691.
+
+
+
 This script serves as an alternative to scripts and packages
 from the following publications:
 
-- Kuharev, J., Navarro, P., Distler, U., Jahn, O., & Tenzer, S. (2015). In-depth evaluation of software tools for data-independent acquisition based label-free quantification. Proteomics, 15(18), 3140–3151. https://doi.org/10.1002/pmic.201400396
+- Kuharev, J., Navarro, P., Distler, U., Jahn, O., & Tenzer, S. (2015). In-depth evaluation of software tools for data-independent acquisition based label-free quantification. Proteomics, 15(18), 3140–3151. https://doi.org/10.1002/pmic.201400396      
 
-- Navarro, P., Kuharev, J., Gillet, L. C., Bernhardt, O. M., MacLean, B., Röst, H. L., Tate, S. A., Tsou, C. C., Reiter, L., Distler, U., Rosenberger, G., Perez-Riverol, Y., Nesvizhskii, A. I., Aebersold, R., & Tenzer, S. (2016). A multicenter study benchmarks software tools for label-free proteome quantification. Nature Biotechnology, 34(11), 1130–1136. https://doi.org/10.1038/nbt.3685
+- Navarro, P., Kuharev, J., Gillet, L. C., Bernhardt, O. M., MacLean, B., Röst, H. L., Tate, S. A., Tsou, C. C., Reiter, L., Distler, U., Rosenberger, G., Perez-Riverol, Y., Nesvizhskii, A. I., Aebersold, R., & Tenzer, S. (2016). A multicenter study benchmarks software tools for label-free proteome quantification. Nature Biotechnology, 34(11), 1130–1136. https://doi.org/10.1038/nbt.3685      
 
 The following publications also combined differential expression analysis with benchmark samples:
 
-- Dowell, J. A., Wright, L. J., Armstrong, E. A., & Denu, J. M. (2021). Benchmarking Quantitative Performance in Label-Free Proteomics. ACS Omega, 6(4), 2494–2504. https://doi.org/10.1021/acsomega.0c04030
+- Dowell, J. A., Wright, L. J., Armstrong, E. A., & Denu, J. M. (2021). Benchmarking Quantitative Performance in Label-Free Proteomics. ACS Omega, 6(4), 2494–2504. https://doi.org/10.1021/acsomega.0c04030    
 
-- Doellinger, J., Blumenscheit, C., Schneider, A., & Lasch, P. (2020). Optimization of data-independent acquisition using predicted libraries for deep and accurate proteome profiling. 3–10. https://doi.org/10.1101/2020.03.02.972570
+- Doellinger, J., Blumenscheit, C., Schneider, A., & Lasch, P. (2020). Optimization of data-independent acquisition using predicted libraries for deep and accurate proteome profiling. 3–10. https://doi.org/10.1101/2020.03.02.972570    
 
 
 
